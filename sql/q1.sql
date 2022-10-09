@@ -1,4 +1,3 @@
-
 WITH
 -- generate a calendar table containing each day of year 2020
 dim_calendar AS (

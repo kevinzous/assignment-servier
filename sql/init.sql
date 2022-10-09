@@ -1,3 +1,4 @@
+-- noqa: disable=all
 CREATE OR REPLACE TABLE  --IF NOT EXISTS
 `MY_DATA_SET.TRANSACTION`
 (date DATE, order_id STRING, client_id STRING, prop_id STRING, prod_price FLOAT64, prod_qty INT64)
