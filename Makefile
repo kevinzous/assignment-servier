@@ -13,11 +13,14 @@ test:  ## Run tests
 lint:  ## Run linting
 	poetry run black --check .
 	poetry run isort -c .
-	poetry run sqlfluff lint sql/
+	# poetry run sqlfluff lint sql/
 
 fix:  ## Run autoformatters
 	poetry run black .
 	poetry run isort .
-	poetry run sqlfluff fix sql/
-	
-.PHONY: ci test lint lint-fix
+	# poetry run sqlfluff fix sql/
+
+clean:
+	rm data/sink/*
+
+.PHONY: ci test lint fix clean
