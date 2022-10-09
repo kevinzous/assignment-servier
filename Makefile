@@ -22,6 +22,7 @@ fix:  ## Run autoformatters
 
 clean:
 	rm -rf data/sink
+	mkdir data/sink
 	find . -name '__pycache__' -type d | xargs rm -fr
 
 .PHONY: ci test lint fix clean
