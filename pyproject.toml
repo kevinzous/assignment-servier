@@ -2,7 +2,7 @@
 name = "assignment-servier"
 version = "0.1.0"
 description = ""
-authors = ["kevinzhou <kevin75ha@hotmail.fr>"]
+authors = ["kevinz"]
 packages = [
     { include = "package" }
 ]

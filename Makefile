@@ -21,6 +21,7 @@ fix:  ## Run autoformatters
 	# poetry run sqlfluff fix sql/
 
 clean:
-	rm data/sink/*
+	rm -rf data/sink
+	find . -name '__pycache__' -type d | xargs rm -fr
 
 .PHONY: ci test lint fix clean
