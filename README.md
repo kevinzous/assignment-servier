@@ -41,19 +41,23 @@ poetry run get_journal_mentionning_most_drugs # question 4
 Quels sont les éléments à considérer pour faire évoluer votre code afin qu’il 
 puisse gérer de grosses volumétries de données (fichiers de plusieurs To ou
 millions de fichiers par exemple) ?
+```
+
+```text
 Pourriez-vous décrire les modifications qu’il faudrait apporter, s’il y en a, 
 pour prendre en considération de telles volumétries ?
 ```
 
 ### I.4- To-do list
 
-- smaller one task functions
+- finish adhoc question 4
+- smaller one-task functions
 - add more abstractions / config
+- "to go further" questions
 - add github actions CI/CD : code linter, dryrun
 - precommit hooks
 - logging
-
-### 
+- data quality / data quarantine
 
 ## II. SQL
 

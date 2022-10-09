@@ -1,2 +1,2 @@
 def cli():
-  pass
+    pass

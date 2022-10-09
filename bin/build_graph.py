@@ -1,4 +1,4 @@
-from pydoc import cli
+# from pydoc import cli
 
 from package.ingest import ingest
 from package.transform import get_drugs_in_journal, get_drugs_in_medium
