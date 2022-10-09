@@ -4,6 +4,7 @@
 
 ### I.1- Project layout
 
+```bash
 .
 ├── Makefile             ##  
 ├── README.md            ## README.md
@@ -22,6 +23,7 @@
 ├── sql                  ## sql code for part 2 questions  
 └── tests
     └── unit_test
+```
 
 ### I.2- Run the pipelines
 
@@ -29,17 +31,18 @@ To run the pipelines, run :
 
 ```bash
 poetry install
-poetry run build_graph # question 3
+poetry run build_graph                        # question 3
 poetry run get_journal_mentionning_most_drugs # question 4
 ```
 
 ### I.3- To go further
 
 ```text
-Quels sont les éléments à considérer pour faire évoluer votre code afin qu’il puisse gérer de grosses
-volumétries de données (fichiers de plusieurs To ou millions de fichiers par exemple) ?
-Pourriez-vous décrire les modifications qu’il faudrait apporter, s’il y en a, pour prendre en considération de
-telles volumétries ?
+Quels sont les éléments à considérer pour faire évoluer votre code afin qu’il 
+puisse gérer de grosses volumétries de données (fichiers de plusieurs To ou
+millions de fichiers par exemple) ?
+Pourriez-vous décrire les modifications qu’il faudrait apporter, s’il y en a, 
+pour prendre en considération de telles volumétries ?
 ```
 
 ### I.4- To-do list
