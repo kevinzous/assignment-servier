@@ -13,6 +13,7 @@ pandas = "^1.5.0"
 
 [tool.poetry.scripts]
 build_graph = "bin.build_graph:cli"
+get_journal_mentionning_most_drugs = "bin.get_journal_mentionning_most_drugs:cli"
 
 [tool.pylint.messages_controls]
 disable = [
