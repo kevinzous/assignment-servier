@@ -20,16 +20,16 @@ def get_drugs_in_medium(
         Needs to have following column(s): "drug"
     df_medium
         Dataframe containing the medium
-        Needs to have following column(s): "date"    
+        Needs to have following column(s): "date"
     MEDIUM
-        Name of the medium, will be used to populate the 
+        Name of the medium, will be used to populate the
         generated column "source"
         ex : "clinical_trial","pubmed"
     MEDIUM_ID
         Column in df_medium used to identify the medium
     LOOKUP_COLUMN
         Column in df_medium in which we look for the drug name
-        ex : "title", "scientific_title"  
+        ex : "title", "scientific_title"
 
     Returns
     -------
@@ -67,7 +67,7 @@ def get_drugs_in_journal(
         Needs to have following column(s): "drug"
     list_df_medium
         list of dataframe containing the medium
-        All dataframe need to have following column(s): "date"    
+        All dataframe need to have following column(s): "date"
     list_medium
         List of media name
         ex : "clinical_trial","pubmed"
@@ -75,7 +75,7 @@ def get_drugs_in_journal(
         Column in df_medium used to identify the journal
     list_lookup_column
         List of columns in df_medium in which we look for the drug name
-        ex : "title", "scientific_title"  
+        ex : "title", "scientific_title"
 
     Returns
     -------

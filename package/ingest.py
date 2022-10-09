@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def ingest()->pd.DataFrame:
+def ingest() -> pd.DataFrame:
     """
     Manually ingest source files and return list of dataframes
     """
