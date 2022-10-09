@@ -56,7 +56,7 @@ def get_drugs_in_journal(
     df_drugs: pd.DataFrame,
     list_df_medium: List[pd.DataFrame],
     list_medium: List[str],
-    MEDIUM_ID: str,
+    JOURNAL_ID: str,
     list_lookup_column: List[str],
 ) -> pd.DataFrame:
     """
@@ -65,23 +65,21 @@ def get_drugs_in_journal(
     df_drugs
         Dataframe containing the drugs
         Needs to have following column(s): "drug"
-    df_medium
-        Dataframe containing the medium
-        Needs to have following column(s): "date"    
-    MEDIUM
-        Name of the medium, will be used to populate the 
-        generated column "source"
+    list_df_medium
+        list of dataframe containing the medium
+        All dataframe need to have following column(s): "date"    
+    list_medium
+        List of media name
         ex : "clinical_trial","pubmed"
-    MEDIUM_ID
-        Column in df_medium used to identify the medium
-    LOOKUP_COLUMN
-        Column in df_medium in which we look for the drug name
+    JOURNAL_ID
+        Column in df_medium used to identify the journal
+    list_lookup_column
+        List of columns in df_medium in which we look for the drug name
         ex : "title", "scientific_title"  
 
     Returns
     -------
-    Dataframe containing drugs mentionned in the defined medium
-    Get the drugs mentionned in the journals
+    Dataframe containing the drugs mentionned in the journals in all specified media
     """
     assert len(list_medium) == len(list_df_medium) == len(list_lookup_column)
 
@@ -91,7 +89,7 @@ def get_drugs_in_journal(
                 df_drugs=df_drugs,
                 df_medium=df_medium,
                 MEDIUM=MEDIUM,
-                MEDIUM_ID=MEDIUM_ID,
+                MEDIUM_ID=JOURNAL_ID,
                 LOOKUP_COLUMN=LOOKUP_COLUMN,
             ).drop_duplicates()
             # iterate through the number of mediums

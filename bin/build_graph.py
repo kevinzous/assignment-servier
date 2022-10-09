@@ -29,7 +29,7 @@ def cli():
         df_drugs=df_drugs,
         list_df_medium=[df_pubmed, df_clinical_trials],
         list_medium=["pubmed", "clinical_trials"],
-        MEDIUM_ID="journal",
+        JOURNAL_ID="journal",
         list_lookup_column=["title", "scientific_title"],
     )
 
