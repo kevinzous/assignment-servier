@@ -1,31 +1,56 @@
 # assignment-servier
 
-
-
 ## I. Python and Data Engineering
+
+### I.1- Project layout
+
 .
 ├── Makefile             ##  
-├── README.md            ##
-├── bin
+├── README.md            ## README.md
+├── bin                  ## entrypoints
 │   └── build_graph.py
 ├── conf
 ├── data
-│   └── sink
-│   └── source
-├── package
-│   ├── __init__.py
+│   └── sink             ## output data
+│   └── source           ## input data
+├── package              ## package
 │   ├── ingest.py
 │   ├── transform.py
 │   └── utils.py
-├── poetry.lock
-├── pyproject.toml
-├── sql
-│   ├── init.sql
-│   ├── q1.sql
-│   └── q2.sql
+├── poetry.lock          ## dependencies lock
+├── pyproject.toml       ## dependencies management
+├── sql                  ## sql code for part 2 questions  
 └── tests
     └── unit_test
-        └── unit_test.py
+
+### I.2- Run the pipelines
+
+To run the pipelines, run :
+
+```bash
+poetry install
+poetry run build_graph # question 3
+poetry run get_journal_mentionning_most_drugs # question 4
+```
+
+### I.3- To go further
+
+```text
+Quels sont les éléments à considérer pour faire évoluer votre code afin qu’il puisse gérer de grosses
+volumétries de données (fichiers de plusieurs To ou millions de fichiers par exemple) ?
+Pourriez-vous décrire les modifications qu’il faudrait apporter, s’il y en a, pour prendre en considération de
+telles volumétries ?
+```
+
+### I.4- To-do list
+
+- smaller one task functions
+- add more abstractions / config
+- add github actions CI/CD : code linter, dryrun
+- precommit hooks
+- logging
+
+### 
 
 ## II. SQL
 
