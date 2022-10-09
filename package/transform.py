@@ -13,8 +13,27 @@ def get_drugs_in_medium(
     LOOKUP_COLUMN: str,
 ) -> pd.DataFrame:
     """
-    Get the list of drugs mentionned in the defined medium.
-    The medium can be "clinical_trial" or "pubmed"
+    Parameters
+    ----------
+    df_drugs
+        Dataframe containing the drugs
+        Needs to have following column(s): "drug"
+    df_medium
+        Dataframe containing the medium
+        Needs to have following column(s): "date"    
+    MEDIUM
+        Name of the medium, will be used to populate the 
+        generated column "source"
+        ex : "clinical_trial","pubmed"
+    MEDIUM_ID
+        Column in df_medium used to identify the medium
+    LOOKUP_COLUMN
+        Column in df_medium in which we look for the drug name
+        ex : "title", "scientific_title"  
+
+    Returns
+    -------
+    Dataframe containing drugs mentionned in the defined medium
     """
     df_cartesian_product = df_drugs.merge(df_medium, how="cross")
     df_cartesian_product["is_drug_mentionned"] = df_cartesian_product.apply(
@@ -40,9 +59,30 @@ def get_drugs_in_journal(
     MEDIUM_ID: str,
     list_lookup_column: List[str],
 ) -> pd.DataFrame:
-
     """
-    Get the drugs mentionned in the journals"""
+    Parameters
+    ----------
+    df_drugs
+        Dataframe containing the drugs
+        Needs to have following column(s): "drug"
+    df_medium
+        Dataframe containing the medium
+        Needs to have following column(s): "date"    
+    MEDIUM
+        Name of the medium, will be used to populate the 
+        generated column "source"
+        ex : "clinical_trial","pubmed"
+    MEDIUM_ID
+        Column in df_medium used to identify the medium
+    LOOKUP_COLUMN
+        Column in df_medium in which we look for the drug name
+        ex : "title", "scientific_title"  
+
+    Returns
+    -------
+    Dataframe containing drugs mentionned in the defined medium
+    Get the drugs mentionned in the journals
+    """
     assert len(list_medium) == len(list_df_medium) == len(list_lookup_column)
 
     df_concat = pd.concat(

@@ -1,8 +1,10 @@
 import pandas as pd
 
 
-def ingest():
-    # read
+def ingest()->pd.DataFrame:
+    """
+    Manually ingest source files and return list of dataframes
+    """
     df_clinical_trials = pd.read_csv(
         "data/source/clinical_trials.csv", parse_dates=["date"], dayfirst=True
     )
