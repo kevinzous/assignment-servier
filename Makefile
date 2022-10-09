@@ -22,7 +22,7 @@ fix:  ## Run autoformatters
 
 clean:
 	rm -rf data/sink
-	mkdir data/sink
+	mkdir data/sink && touch data/sink/.gitkeep
 	find . -name '__pycache__' -type d | xargs rm -fr
 
 .PHONY: ci test lint fix clean
