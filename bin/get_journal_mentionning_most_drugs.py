@@ -9,4 +9,4 @@ def cli():
     """
     res = get_journal_mentionning_most_drugs()
     res.to_json("data/sink/res_journal_mentionning_most_drugs.json")
-    print("write to data/sink")
+    print("written to data/sink")

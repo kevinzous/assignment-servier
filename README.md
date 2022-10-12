@@ -32,7 +32,7 @@ To run the pipelines, execute :
 
 ```bash
 poetry install                                ## install dependencies
-make clean                                    ## clean output files if pipelines had been run
+make clean                                    ## clean output files if pipelines were run
 poetry run build_graph                        ## question 3
 poetry run get_journal_mentionning_most_drugs ## question 4
 ```
@@ -59,13 +59,12 @@ pour prendre en considération de telles volumétries ?
           transform(chunk)
     ```
 
-- global optimizations :
+- structural optimizations :
   - adopt a cloud solution
   - leverage a cloud service that handles big volumes/ distributed computing : Dataproc(Spark), Dataflow, Bigquery
 
 ### I.4- To-do list
 
-- finish adhoc question 4
 - smaller one-task functions
 - add more abstractions / config
 - add github actions CI/CD : code linter, dryrun
