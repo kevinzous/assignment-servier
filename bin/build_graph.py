@@ -1,5 +1,6 @@
 # from pydoc import cli
 
+from conf.config import OUTPUT_PATH, extract_conf
 from package.ingest import ingest
 from package.transform import get_drugs_in_journal, get_drugs_in_medium
 
@@ -11,33 +12,33 @@ def cli():
     """
     df_drugs, df_clinical_trials, df_pubmed = ingest()
 
-    res_trials = get_drugs_in_medium(
+    res_clinical_trials = get_drugs_in_medium(
         df_drugs=df_drugs,
         df_medium=df_clinical_trials,
-        MEDIUM="clinical_trials",
-        MEDIUM_ID="id",
-        LOOKUP_COLUMN="scientific_title",
+        medium=extract_conf["clinical_trials"]["medium"],
+        medium_id=extract_conf["clinical_trials"]["medium_id"],
+        lookup_column=extract_conf["clinical_trials"]["lookup_column"],
     )
+
+    res_clinical_trials.to_json(
+        f'{OUTPUT_PATH}/{extract_conf["clinical_trials"]["output_name"]}.json'
+    )
+
     res_pubmed = get_drugs_in_medium(
         df_drugs=df_drugs,
         df_medium=df_pubmed,
-        MEDIUM="pubmed",
-        MEDIUM_ID="id",
-        LOOKUP_COLUMN="title",
+        medium=extract_conf["pubmed"]["medium"],
+        medium_id=extract_conf["pubmed"]["medium_id"],
+        lookup_column=extract_conf["pubmed"]["lookup_column"],
     )
+    res_pubmed.to_json(f'{OUTPUT_PATH}/{extract_conf["pubmed"]["output_name"]}.json')
     res_journal = get_drugs_in_journal(
         df_drugs=df_drugs,
         list_df_medium=[df_pubmed, df_clinical_trials],
         list_medium=["pubmed", "clinical_trials"],
-        JOURNAL_ID="journal",
+        journal_id="journal",
         list_lookup_column=["title", "scientific_title"],
     )
-
     res_journal.to_json("data/sink/res_journal.json")
-    res_trials.to_json("data/sink/res_trials.json", orient="split")
-    res_pubmed.to_json("data/sink/res_pubmed.json")
 
-    print(res_journal.dtypes)
-    print(res_pubmed.dtypes)
-
-    print("write to data/sink")
+    print("written to data/sink")
