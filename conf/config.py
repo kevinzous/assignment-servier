@@ -34,4 +34,9 @@ extract_conf = dict(
     ),
 )
 
-
+extract_journal_conf = dict(
+    list_medium=["pubmed", "clinical_trials"],
+    journal_id="journal",
+    list_lookup_column=["title", "scientific_title"],
+    output_name="res_journal",
+)

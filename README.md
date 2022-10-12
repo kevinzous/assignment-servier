@@ -28,13 +28,29 @@
 
 ### I.2- Run the pipelines
 
-To run the pipelines, execute :
+To run the pipelines, first install the environment :
 
 ```bash
-poetry install                                ## install dependencies
-make clean                                    ## clean output files if pipelines were run
-poetry run build_graph                        ## question 3
-poetry run get_journal_mentionning_most_drugs ## question 4
+## install dependencies
+poetry install
+## clean output files if pipelines were run                                
+make clean
+```
+
+Question 3
+
+```bash
+poetry run build_graph
+# cat data/sink/res_journal.json # run to see results 
+# cat data/sink/res_pubmed.json # run to see results 
+# cat data/sink/res_clinical_trials.json # run to see results 
+```
+
+Question 4
+
+```bash
+poetry run get_journal_mentionning_most_drugs 
+# cat data/sink/res_journal_mentionning_most_drugs.json # run to see results 
 ```
 
 ### I.3- To go further
@@ -66,13 +82,12 @@ pour prendre en considération de telles volumétries ?
 ### I.4- To-do list
 
 - smaller one-task functions
-- add more abstractions / config
+- more clean management of config data
 - add github actions CI/CD : code linter, dryrun
 - precommit hooks
 - logging
 - more unit tests/ integration tests
-- data quality / data quarantine
-- management of errors/exceptions
+- management of errors/exceptions through a quarantine zone/ data quality checks 
 
 ## II. SQL
 

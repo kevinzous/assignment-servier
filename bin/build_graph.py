@@ -1,6 +1,6 @@
 # from pydoc import cli
 
-from conf.config import OUTPUT_PATH, extract_conf
+from conf.config import OUTPUT_PATH, extract_conf, extract_journal_conf
 from package.ingest import ingest
 from package.transform import get_drugs_in_journal, get_drugs_in_medium
 
@@ -32,13 +32,14 @@ def cli():
         lookup_column=extract_conf["pubmed"]["lookup_column"],
     )
     res_pubmed.to_json(f'{OUTPUT_PATH}/{extract_conf["pubmed"]["output_name"]}.json')
+
     res_journal = get_drugs_in_journal(
         df_drugs=df_drugs,
         list_df_medium=[df_pubmed, df_clinical_trials],
-        list_medium=["pubmed", "clinical_trials"],
-        journal_id="journal",
-        list_lookup_column=["title", "scientific_title"],
+        list_medium=extract_journal_conf["list_medium"],
+        journal_id=extract_journal_conf["journal_id"],
+        list_lookup_column=extract_journal_conf["list_lookup_column"],
     )
-    res_journal.to_json("data/sink/res_journal.json")
+    res_journal.to_json(f'{OUTPUT_PATH}/{extract_journal_conf["output_name"]}.json')
 
     print("written to data/sink")
