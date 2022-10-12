@@ -6,33 +6,35 @@
 
 ```bash
 .
-├── Makefile             ##  
-├── README.md            ## README.md
-├── bin                  ## entrypoints
-│   └── build_graph.py
-├── conf
-├── data
-│   └── sink             ## output data
-│   └── source           ## input data
-├── package              ## package
-│   ├── ingest.py
-│   ├── transform.py
-│   └── utils.py
-├── poetry.lock          ## dependencies lock
-├── pyproject.toml       ## dependencies management
-├── sql                  ## sql code for part 2 questions  
-└── tests
-    └── unit_test
+├── Makefile                                    
+├── README.md                                 ## README.md
+├── bin                                       ## entrypoints
+│   └── build_graph.py                        ## question 3
+│   └── get_journal_mentionning_most_drugs.py ## question 4
+├── conf                                      
+├── data                                      
+│   └── sink                                  ## output data
+│   └── source                                ## input data
+├── package                                   ## package
+│   ├── ingest.py                             
+│   ├── transform.py                          
+│   └── utils.py                              
+├── poetry.lock                               ## dependencies management
+├── pyproject.toml                            
+├── sql                                       ## sql code for part 2 questions  
+└── tests                                     
+    └── unit_test                             
 ```
 
 ### I.2- Run the pipelines
 
-To run the pipelines, run :
+To run the pipelines, execute :
 
 ```bash
-poetry install
-poetry run build_graph                        # question 3
-poetry run get_journal_mentionning_most_drugs # question 4
+poetry install                                ## install dependencies
+make clean                                    ## clean output files if pipelines had been run
+poetry run build_graph                        ## question 3
+poetry run get_journal_mentionning_most_drugs ## question 4
 ```
 
 ### I.3- To go further
@@ -41,23 +43,37 @@ poetry run get_journal_mentionning_most_drugs # question 4
 Quels sont les éléments à considérer pour faire évoluer votre code afin qu’il 
 puisse gérer de grosses volumétries de données (fichiers de plusieurs To ou
 millions de fichiers par exemple) ?
-```
-
-```text
 Pourriez-vous décrire les modifications qu’il faudrait apporter, s’il y en a, 
 pour prendre en considération de telles volumétries ?
 ```
+
+- small optimizations :
+  - load data/columns only related to business needs
+  - use efficient less memory-intensive data types like ```int64``` or ```categorical``` instead of ```object```
+  - use more efficient storage format like column-oriented format parquet with ```pandas.read_parquet``` and ```pandas.Dataframes.to_parquet```
+  - leverage chunking : split files into smaller "chunks"
+  
+    ```python
+    with pd.read_csv(FILENAME, chunksize=CHUNKSIZE) as reader:
+      for chunk in reader:
+          transform(chunk)
+    ```
+
+- global optimizations :
+  - adopt a cloud solution
+  - leverage a cloud service that handles big volumes/ distributed computing : Dataproc(Spark), Dataflow, Bigquery
 
 ### I.4- To-do list
 
 - finish adhoc question 4
 - smaller one-task functions
 - add more abstractions / config
-- "to go further" questions
 - add github actions CI/CD : code linter, dryrun
 - precommit hooks
 - logging
+- more unit tests/ integration tests
 - data quality / data quarantine
+- management of errors/exceptions
 
 ## II. SQL
 
