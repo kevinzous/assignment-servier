@@ -33,17 +33,11 @@ def cli():
         list_lookup_column=["title", "scientific_title"],
     )
 
-    # print(df_drugs.shape)
-    # print(df_drugs)
-    # print(res_trials.shape)
-    # print(res_trials)
-    # print(res_pubmed.shape)
-    # print(res_pubmed)
-    # print(res_journal.shape)
-    # print(res_journal)
-
     res_journal.to_json("data/sink/res_journal.json")
     res_trials.to_json("data/sink/res_trials.json", orient="split")
     res_pubmed.to_json("data/sink/res_pubmed.json")
 
-    print("succeeded")
+    print(res_journal.dtypes)
+    print(res_pubmed.dtypes)
+
+    print("write to data/sink")

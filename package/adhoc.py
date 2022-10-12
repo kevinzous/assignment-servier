@@ -14,5 +14,9 @@ def get_journal_mentionning_most_drugs() -> str:
     df_group_by = (
         df_journal.groupby("medium_id").drug.nunique().sort_values(ascending=False)
     )
-    journal = df_group_by.head(1).reset_index().rename(columns={"drug":"distinct_count_drugs"})
+    journal = (
+        df_group_by.head(1)
+        .reset_index()
+        .rename(columns={"drug": "distinct_count_drugs"})
+    )
     return journal
