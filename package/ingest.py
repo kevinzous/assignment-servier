@@ -15,7 +15,9 @@ def ingest() -> pd.DataFrame:
     df_drugs = pd.read_csv(filepath_or_buffer=ingest_conf["drugs"]["path"])
     df_pubmed = pd.concat(
         [
-            pd.read_json("data/source/pubmed_cor.json"),
+            pd.read_json(
+                "data/source/pubmed_cor.json", convert_dates=["date"]
+            ),  ## to be included in conf
             pd.read_csv(
                 filepath_or_buffer=ingest_conf["pubmed"]["path"],
                 parse_dates=ingest_conf["pubmed"]["parse_dates"],
