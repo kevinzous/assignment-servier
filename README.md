@@ -8,20 +8,20 @@
 .
 ├── Makefile                                    
 ├── README.md                                 ## README.md
-├── bin                                       ## entrypoints
-│   └── build_graph.py                        ## question 3
-│   └── get_journal_mentionning_most_drugs.py ## question 4
+├── bin                                       ## Entrypoints
+│   └── build_graph.py                        ## Question 3
+│   └── get_journal_mentionning_most_drugs.py ## Question 4
 ├── conf                                      
 ├── data                                      
-│   └── sink                                  ## output data
-│   └── source                                ## input data
-├── package                                   ## package
+│   └── sink                                  ## Output data
+│   └── source                                ## Input data
+├── package                                   ## Package
 │   ├── ingest.py                             
 │   ├── transform.py                          
 │   └── utils.py                              
-├── poetry.lock                               ## dependencies management
+├── poetry.lock                               ## Dependencies management
 ├── pyproject.toml                            
-├── sql                                       ## sql code for part 2 questions  
+├── sql                                       ## SQL code for part 2 questions  
 └── tests                                     
     └── unit_test                             
 ```
@@ -31,9 +31,9 @@
 To run the pipelines, first install the environment :
 
 ```bash
-## install dependencies
+## Install dependencies
 poetry install
-## clean output files if pipelines were run                                
+## Clean output files if pipelines were run                                
 make clean
 ```
 
@@ -41,16 +41,16 @@ Question 3
 
 ```bash
 poetry run build_graph
-# cat data/sink/res_journal.json # run to see results 
-# cat data/sink/res_pubmed.json # run to see results 
-# cat data/sink/res_clinical_trials.json # run to see results 
+# cat data/sink/res_journal.json # Run to see results 
+# cat data/sink/res_pubmed.json # Run to see results 
+# cat data/sink/res_clinical_trials.json # Run to see results 
 ```
 
 Question 4
 
 ```bash
 poetry run get_journal_mentionning_most_drugs 
-# cat data/sink/res_journal_mentionning_most_drugs.json # run to see results 
+# cat data/sink/res_journal_mentionning_most_drugs.json # Run to see results 
 ```
 
 ### I.3- To go further
@@ -63,11 +63,11 @@ Pourriez-vous décrire les modifications qu’il faudrait apporter, s’il y en 
 pour prendre en considération de telles volumétries ?
 ```
 
-- small optimizations :
-  - load data/columns only related to business needs
-  - use efficient less memory-intensive data types like ```int64``` or ```categorical``` instead of ```object```
-  - use more efficient storage format like column-oriented format parquet with ```pandas.read_parquet``` and ```pandas.Dataframes.to_parquet```
-  - leverage chunking : split files into smaller "chunks"
+- Small optimizations :
+  - Load data/columns only related to business needs
+  - Use efficient less memory-intensive data types like ```int64``` or ```categorical``` instead of ```object```
+  - Use more efficient storage format like column-oriented format parquet with ```pandas.read_parquet``` and ```pandas.Dataframes.to_parquet```
+  - Leverage chunking : split files into smaller "chunks"
   
     ```python
     with pd.read_csv(FILENAME, chunksize=CHUNKSIZE) as reader:
@@ -75,19 +75,19 @@ pour prendre en considération de telles volumétries ?
           transform(chunk)
     ```
 
-- structural optimizations :
-  - adopt a cloud solution
-  - leverage a cloud service that handles big volumes/ distributed computing : Dataproc(Spark), Dataflow, Bigquery
+- Structural optimizations :
+  - Adopt a cloud solution
+  - Leverage a cloud service that handles big volumes/ distributed computing : Dataproc(Spark), Dataflow, Bigquery
 
 ### I.4- To-do list
 
-- smaller one-task functions
-- more clean management of config data
-- add github actions CI/CD : code linter, dryrun
-- precommit hooks
-- logging
-- more unit tests/ integration tests
-- management of errors/exceptions through a quarantine zone/ data quality checks 
+- Smaller one-task functions
+- Cleaner management of config data
+- Github actions CI/CD : code linter, dryrun
+- Precommit hooks
+- Logging
+- More unit tests/integration tests
+- Management of errors/exceptions through a quarantine zone/ data quality checks
 
 ## II. SQL
 
